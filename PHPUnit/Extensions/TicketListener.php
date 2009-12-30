@@ -208,6 +208,8 @@ abstract class PHPUnit_Extensions_TicketListener implements PHPUnit_Framework_Te
                     $adjustTicket = TRUE;
                 }
 
+                $ticketInfo = $this->getTicketInfo();
+
                 if ($adjustTicket && in_array($ticketInfo[3]['status'], $ifStatus)) {
                     $this->updateTicket($ticket, $newStatus, $message, $resolution);
                 }
@@ -215,6 +217,7 @@ abstract class PHPUnit_Extensions_TicketListener implements PHPUnit_Framework_Te
         }
     }
 
+    abstract protected function getTicketInfo($ticketId);
     abstract protected function updateTicket($ticketId, $newStatus, $message, $resolution);
 }
 ?>
