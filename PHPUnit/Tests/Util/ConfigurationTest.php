@@ -274,6 +274,7 @@ class Util_ConfigurationTest extends PHPUnit_Framework_TestCase
               'host' => 'my.linux.box',
               'port' => 4444,
               'timeout' => 30000,
+              'browserUrl' => 'http://example.com',
             ),
           ),
           $this->configuration->getSeleniumBrowserConfiguration()
