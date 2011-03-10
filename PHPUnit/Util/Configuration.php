@@ -144,7 +144,8 @@ PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
  *              browser="*firefox /usr/lib/firefox/firefox-bin"
  *              host="my.linux.box"
  *              port="4444"
- *              timeout="30000"/>
+ *              timeout="30000"
+ *              browserUrl="http://example.com"/>
  *   </selenium>
  * </phpunit>
  * </code>
@@ -594,12 +595,19 @@ class PHPUnit_Util_Configuration
                 $timeout = 30000;
             }
 
+            if ($config->hasAttribute('browserUrl')) {
+                $browserUrl = (string)$config->getAttribute('browserUrl');
+            } else {
+                $browserUrl = null;
+            }
+
             $result[] = array(
               'name'    => $name,
               'browser' => $browser,
               'host'    => $host,
               'port'    => $port,
-              'timeout' => $timeout
+              'timeout' => $timeout,
+              'browserUrl' => $browserUrl,
             );
         }
 
